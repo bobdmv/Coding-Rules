@@ -41,7 +41,7 @@ class foo_Bar : public Foo, public bar // Don't
 }
 ```
 
-#### 1.1.1 Enumerators
+#### 1.1.1. Enumerators
 
 Enumerators should start with an upper-case letter, just like types. Unless the enumerators are defined in their own small namespace or inside a class, enumerators should have a prefix corresponding to the enum declaration name.
 
@@ -71,7 +71,7 @@ public:
 }
 ```
 
-### 1.2 Variables
+### 1.2. Variables
 
 Variable names should be nouns (as they represent state). The name should be in camel case, and start with a lower-case letter.
 
@@ -87,7 +87,7 @@ int calcSomething(const int userVal) // Do
 
 #### 1.2.1. Protected and private fields
 
-Protected and private fields should follow the "Variables names" rule and they should have “m_” prefix.
+Protected and private fields should follow the "Variables names" rule and they should have `m_` prefix.
 
 ```C++
 class Foo
@@ -106,9 +106,9 @@ private:
 
 #### 1.2.2. Global variables
 
-Global variables should follow the the "Variables names" rule and if global variable is used across multiple files it must be prefixed with “g_”. If it is used in single file it should be prefixed with “s_”.
+Global variables should follow the the "Variables names" rule and if global variable is used across multiple files it must be prefixed with `g_`. If it is used in a single file it should be prefixed with `s_`.
 
-### 1.3 Functions
+### 1.3. Functions
 
 Function names should be verb phrases (as they represent actions), and command-like function should be imperative. The name should be in camel case, and start with a lower-case letter.
 
@@ -125,26 +125,26 @@ public:
 
 #### 1.3.1. Getters and setters
 
-Getters and setters should follow the above rule. Also getter should be prefixed with “get” or “is”. There are a few alternatives to the “is” prefix that fit better in some situations. These are the “has”, “can” and “should” prefixes. Try not to use these prefixes for functions that look like simple getters, but actually do some calculations inside to return a value.
+Getters and setters should follow the above rule. Also getter should be prefixed with `get` or `is`. There are a few alternatives to the `is` prefix that fit better in some situations. These are the `has`, `can` and `should` prefixes. Try not to use these prefixes for functions that look like simple getters, but actually do some calculations inside to return a value.
 
 It is allowed to write getters without a prefix, but the presence of a prefix allows getters to be grouped in the IDE autocompletion list.
 
-Setters should be prefixed with “set”.
+Setters should be prefixed with `set`.
 
 ```C++
 class Foo
 {
 public:
-  int  getValue();        // Good, recommended
+  int  getValue();        // Do, recommended
   int  value();           // Allowed, not recommended
-  void setValue(int val); // Good
+  void setValue(int val); // Do
 
 protected:
-  bool isSomethingEnabled();                  // Good
-  void setSomethingEnabled(const bool value); // Good
-  bool hasLicense();                          // Good
-  bool canEvaluate();                         // Good
-  bool shouldSort();                          // Good
+  bool isSomethingEnabled();                  // Do
+  void setSomethingEnabled(const bool value); // Do
+  bool hasLicense();                          // Do
+  bool canEvaluate();                         // Do
+  bool shouldSort();                          // Do
 };
 ```
 
@@ -160,16 +160,16 @@ Preprocessor macros must be all uppercase with words separated by underscores.
 #define nb_colors  256 // Don't
 ```
 
-Try to avoid using macros to define constant primitives. It is better to use "constexpr" variables.
+Try to avoid using macros to define constant primitives. It is better to use `constexpr` variables.
 
-### 1.5 Files
+### 1.5. Files
 
-Since most files usually contain a declaration or implementation of only one type, then name the files according to the "Types names" rule.
+Since most files usually contain a declaration or definition of only one type, then name the files according to the "Types names" rule.
 
 Use the following as file extensions:
-- .cpp - for files that contain implementations;
+- .cpp - for files that contain definitions;
 - .h - for files that contain a declarations;
-- .hpp - for header-only types which contain declaration and implementation in a single file.
+- .hpp - for header-only types which contain declarations and definitions in a single file.
 
 ## 2. Formatting
 
@@ -185,7 +185,7 @@ Each line of text in your code should be at most 80 characters long. However, if
 
 #### 2.3.1. Open Braces
 
-Opening brace must be always on a new line for namespaces, types, functions, control statements (if, else, for, while, etc.). Control statements should always have braces, even if they contain only one line in their body.
+Opening brace must be always on a new line for namespaces, types, functions, control statements (`if`, `else`, `for`, `while`, etc.). Control statements should always have braces, even if they contain only one line in their body.
 
 Do:
 ```C++
@@ -226,11 +226,11 @@ Closing curly braces must be always on a new line. Empty types or empty function
 
 #### 2.3.3. Keywords
 
-Keywords “else”, “while” and “catch” should be always on a new line.
+Keywords `else`, `while` and `catch` should be always on a new line.
 
 #### 2.3.4. Switch statements
 
-Switch statements should follow above rules. "break" keyword should be inside braces.
+Switch statements should follow above rules. `break` keyword should be inside braces.
 
 ```C++
 switch (condition)
@@ -313,7 +313,7 @@ int b=4*5-6;       // Don't
 
 #### 2.4.2. Control statements
 
-Control statements should include space character before opening parenthesis. Don't put space character after opening or before closing parenthesis. Semicolon characters in "for" statements should be followed by a space character.
+Control statements should include space character before opening parenthesis. Don't put space character after opening or before closing parenthesis. Semicolon characters in `for` statements should be followed by a space character.
 
 ```C++
 // Do
@@ -460,9 +460,9 @@ Use `//` for regular comments and `///` for documentation.
 
 Use at-sign (`@`) for [Doxygen commands](https://www.doxygen.nl/manual/commands.html) to avoid potential problems with other tools.
 
-Use [@see](https://www.doxygen.nl/manual/commands.html#cmdsee) command to cross-references to classes, functions, methods, variables, files or URLs. Two names joined by either :: or # are understood as referring to a class and one of its members. One of several overloaded methods or constructors may be selected by including a parenthesized list of argument types after the method name.
+Use [@see](https://www.doxygen.nl/manual/commands.html#cmdsee) command to cross-references to classes, functions, methods, variables, files or URLs. Two names joined by either `::` or `#` are understood as referring to a class and one of its members. One of several overloaded methods or constructors may be selected by including a parenthesized list of argument types after the method name.
 
-### 3.1 Classes
+### 3.2. Classes
 
 Use [@code](https://www.doxygen.nl/manual/commands.html#cmdcode) command to put inline usage examples of your class in its description. By default the language that is assumed for syntax highlighting is based on the location where the `@code` block was found. If it is unclear from the context which language is meant (for instance the comment is in a .txt or .markdown file) then you can also explicitly indicate the language, by putting the file extension typically that doxygen associated with the language in curly brackets after the code block: `@code{.cpp}`
 
@@ -482,7 +482,7 @@ class TestClass
 };
 ```
 
-### 3.2 Functions
+### 3.3. Functions
 
 Use [@param](https://www.doxygen.nl/manual/commands.html#cmdparam) command for parameter description.
 
@@ -517,7 +517,7 @@ Example:
 void setPosition(double x, double y, double z);
 ```
 
-#### 3.2.1 Getters/Setters
+#### 3.3.1 Getters/Setters
 
 Don't document getters and setters if they are simple enough. This kind of comment doesn’t bring more information than the function prototype, and must be potentially maintained. It should be clear what these methods do.
 
@@ -547,7 +547,7 @@ Solver* getSolver() const;
 void setSolver(const Solver* solver);
 ```
 
-### 3.3 Members
+### 3.4. Members
 
 If you want to document the members of a file, struct, union, class, or enum, it is sometimes desired to place the documentation block after the member instead of before. For this purpose you have to put an additional `<` marker in the comment block. Note that this also works for the parameters of a function.
 
@@ -558,9 +558,9 @@ int var; ///< Brief description after the member.
 
 ## 4. Miscellaneous
 
-### 4.1. #pragma once
+### 4.1. `#pragma once`
 
-Use "#pragma once" instead of include guards. "#pragma once" serves the same purpose as include guards, but with several advantages, including: less code, avoidance of name clashes, and sometimes improvement in compilation speed.
+Use `#pragma once` instead of include guards. `#pragma once` serves the same purpose as include guards, but with several advantages, including: less code, avoidance of name clashes, and sometimes improvement in compilation speed.
 
 ### 4.2. Separate declaration and definition
 
@@ -568,18 +568,17 @@ Try not to put the implementation of methods, even simple ones, in the header fi
 
 ### 4.3. Methods override
 
-For overridden methods you must use “override” keyword. This will prevent you from painfully debugging when the someone changed base class behaviour and your child class “suddenly” stopped working.
+For overridden methods you must use `override` keyword. This will prevent you from painfully debugging when the someone changed base class behaviour and your child class “suddenly” stopped working.
 
 ### 4.4. Functions arguments
 
-Arguments that will not be modified inside function should have “const” keyword. Even if you pass them as copy.
+Arguments that will not be modified inside function should have `const` keyword. Even if you pass them as copy.
 
 ### 4.5. Exit early
 
 Don’t stack conditions blocks inside each other. It increases code complexity and limits space for code (remember about the "Lines length" rule).
 
 Do:
-
 ```C++
 std::string performSomeEquation()
 {
@@ -633,16 +632,24 @@ std::string performSomeEquation()
 }
 ```
 
-### 4.6. "auto" keyword
+### 4.6. `auto` keyword
 
-There is no strict rule for using "auto" keyword. Use it when you feel that it will improve readability. For example, when the type of an object is not particularly important, such as an iterator. Or when the type is obvious from the context, for example, when getting an object from a collection. In other cases, prefer to explicitly specify the type.
+There is no strict rule for using `auto` keyword. Use it when you feel that it will improve readability. For example, when the type of an object is not particularly important, such as an iterator. Or when the type is obvious from the context, for example, when getting an object from a collection. In other cases, prefer to explicitly specify the type.
 
-### 4.7 "int* p;" or "int *p;"
+### 4.7. `int* p;` or `int *p;`
 
-Use "int* p;" because it is easer to read, since the type of p is int*.
+Use `int* p;` because it is easer to read, since the type of `p` is `int*`.
 
-To avoid potential error:
+To avoid potential errors follow the rule: declare one name per line.
+
+Do:
 ```C++
-int* p, p1;	// probable error: p1 is not an int*
+int* p;
+int* p1;
 ```
-follow the rule: declare one name per line.
+
+Don't:
+```C++
+int *p;
+int* p1, p2; // probable error: p2 is not an int*
+```
